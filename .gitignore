@@ -2,4 +2,4 @@
 .ide/
 target/
 *.iml
-/src/main/resources/jdbc.propertie
+/src/main/resources/jdbc.properties
