@@ -16,9 +16,9 @@ public class Pet {
 
     private String name;
     private int age;
+    private double weight;
+    private boolean pureRace;
 
     private String ownerName;
 
-    private double weight;
-    private boolean pureRace;
 }

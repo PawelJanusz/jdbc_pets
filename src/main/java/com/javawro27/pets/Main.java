@@ -3,36 +3,79 @@ package com.javawro27.pets;
 import com.javawro27.pets.model.Pet;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
 
     public static void main(String[] args) {
-
         PetDao dao = new PetDao();
-        Random random = new Random();
-        int age = random.nextInt(15);
 
-        // Add pet
-        Pet pet1 = Pet.builder()
-                .name("Azor")
-                .age(age)
-                .weight(8.5)
-                .pureRace(false)
-                .ownerName("Piotr")
-                .build();
-        Pet pet2 = Pet.builder()
-                .name("Bobek")
-                .age(age)
-                .weight(4.23)
-                .pureRace(false)
-                .ownerName("Andrzej")
-                .build();
+        Scanner scanner = new Scanner(System.in);
 
-        dao.addToDatabase(pet1);
-        dao.addToDatabase(pet2);
-        dao.addToDatabase(pet2);
-        dao.addToDatabase(pet1);
+        String command;
+
+        do {
+            System.out.println("Podaj komendę [add/list/delete/update]");
+            command = scanner.nextLine();
+
+            if (command.equalsIgnoreCase("add")){
+                addPets(dao, scanner);
+            }else if (command.equalsIgnoreCase("list")){
+                listPets(dao);
+            }
+
+        }while (!command.equalsIgnoreCase("quit"));
+
 
     }
+
+    private static void addPets(PetDao dao, Scanner scanner){
+        System.out.println("Podaj parametry: IMIE WIEK WAGA CZY_RASA_CZYSTA IMIE_WLASCICIELA");
+        String line = scanner.nextLine();
+        String[] words = line.split(" ");
+
+        Pet pet = Pet.builder()
+                .name(words[0])
+                .age(Integer.parseInt(words[1]))
+                .weight(Double.parseDouble(words[2]))
+                .pureRace(Boolean.parseBoolean(words[3]))
+                .ownerName(words[4])
+                .build();
+        dao.addToDatabase(pet);
+    }
+
+    private static void listPets(PetDao dao){
+        System.out.println("Lista zwierząt domowych: ");
+        dao.getAllPets().forEach(System.out::println);
+    }
+
+
+
+
+
+    //        PetDao dao = new PetDao();
+//        Random random = new Random();
+//        int age = random.nextInt(15);
+//
+//        // Add pet
+//        Pet pet1 = Pet.builder()
+//                .name("Azor")
+//                .age(age)
+//                .weight(8.5)
+//                .pureRace(false)
+//                .ownerName("Piotr")
+//                .build();
+//        Pet pet2 = Pet.builder()
+//                .name("Bobek")
+//                .age(age)
+//                .weight(4.23)
+//                .pureRace(false)
+//                .ownerName("Andrzej")
+//                .build();
+//
+//        dao.addToDatabase(pet1);
+//        dao.addToDatabase(pet2);
+//        dao.addToDatabase(pet2);
+//        dao.addToDatabase(pet1);
 }

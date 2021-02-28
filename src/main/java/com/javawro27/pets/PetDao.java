@@ -24,11 +24,9 @@ public class PetDao {
 
             statement.setString(1, pet.getName());
             statement.setInt(2, pet.getAge());
-            statement.setDouble(3, pet.getWeight());
-            statement.setBoolean(4, pet.isPureRace());
-            statement.setString(5, pet.getOwnerName());
-
-
+            statement.setString(3, pet.getOwnerName());
+            statement.setDouble(4, pet.getWeight());
+            statement.setBoolean(5, pet.isPureRace());
 
             int affectedRecords = statement.executeUpdate();
 
