@@ -16,13 +16,17 @@ public class Main {
         String command;
 
         do {
-            System.out.println("Podaj komendę [add/list/delete/update]");
+            System.out.println("Podaj komendę [add/list/delete/update/quit]");
             command = scanner.nextLine();
 
             if (command.equalsIgnoreCase("add")){
                 addPets(dao, scanner);
             }else if (command.equalsIgnoreCase("list")){
                 listPets(dao);
+            }else if (command.equalsIgnoreCase("delete")){
+                deletePet(dao, scanner);
+            }else if (command.equalsIgnoreCase("update")){
+                updatePet(dao, scanner);
             }
 
         }while (!command.equalsIgnoreCase("quit"));
@@ -49,6 +53,31 @@ public class Main {
         System.out.println("Lista zwierząt domowych: ");
         dao.getAllPets().forEach(System.out::println);
     }
+
+    private static void deletePet(PetDao dao, Scanner scanner){
+        System.out.println("Podaj ID zwierzaka: ");
+        Long id = Long.parseLong(scanner.nextLine());
+        dao.deletePet(id);
+    }
+
+    private static void updatePet(PetDao dao, Scanner scanner){
+        System.out.println("Podaj ID zwierzaka: ");
+        Long id = Long.parseLong(scanner.nextLine());
+
+        System.out.println("Podaj parametry: IMIE WIEK WAGA CZY_RASA_CZYSTA IMIE_WLASCICIELA");
+        String line = scanner.nextLine();
+        String[] words = line.split(" ");
+        Pet pet = Pet.builder()
+                .name(words[0])
+                .age(Integer.parseInt(words[1]))
+                .weight(Double.parseDouble(words[2]))
+                .pureRace(Boolean.parseBoolean(words[3]))
+                .ownerName(words[4])
+                .id(id)
+                .build();
+        dao.updatePet(pet);
+    }
+
 
 
 

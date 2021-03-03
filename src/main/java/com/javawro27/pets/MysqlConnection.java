@@ -24,6 +24,7 @@ public class MysqlConnection {
         mysqlDataSource.setServerName(mysqlConnectionParameters.getDatabaseHost());
         mysqlDataSource.setPort(Integer.parseInt(mysqlConnectionParameters.getDatabasePort()));
 
+
         try {
             mysqlDataSource.setServerTimezone("Europe/Warsaw"); // strefa czasowa
             mysqlDataSource.setUseSSL(false); // czy szyfrowanie : nie

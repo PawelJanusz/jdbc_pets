@@ -85,7 +85,6 @@ public class PetDao {
     public void deletePet(Pet pet){
         if (pet.getId() == null){
             System.err.println("Nie można edytować zwierzaka bez id.");
-            return;
         }
     }
 
