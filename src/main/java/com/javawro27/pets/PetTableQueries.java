@@ -15,7 +15,7 @@ public interface PetTableQueries {
                 "`owner_name` VARCHAR(15) NOT NULL\n" +
                 ");";
 
-        String INSERT_STUDENT_QUERY =
+        String INSERT_PET_QUERY =
                 "INSERT INTO `pets` (`name`, `age`, `weight`, `pure_race`, `owner_name`) VALUES (?, ?, ?, ?, ?);";
 
         String SELECT_ALL_PETS_QUERY =

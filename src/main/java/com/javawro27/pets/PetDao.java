@@ -4,7 +4,6 @@ import com.javawro27.pets.model.Pet;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PetDao {
@@ -20,13 +19,13 @@ public class PetDao {
     public void addToDatabase(Pet pet) {
         try {
             Connection connection = mysqlConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement(PetTableQueries.INSERT_STUDENT_QUERY, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement(PetTableQueries.INSERT_PET_QUERY, Statement.RETURN_GENERATED_KEYS);
 
             statement.setString(1, pet.getName());
             statement.setInt(2, pet.getAge());
-            statement.setString(3, pet.getOwnerName());
-            statement.setDouble(4, pet.getWeight());
-            statement.setBoolean(5, pet.isPureRace());
+            statement.setDouble(3, pet.getWeight());
+            statement.setBoolean(4, pet.isPureRace());
+            statement.setString(5, pet.getOwnerName());
 
             int affectedRecords = statement.executeUpdate();
 
