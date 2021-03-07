@@ -15,6 +15,7 @@ public class Pet {
     private Long id;
 
     private String name;
+    private String petType;
     private int age;
     private double weight;
     private boolean pureRace;

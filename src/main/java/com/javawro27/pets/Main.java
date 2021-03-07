@@ -35,16 +35,17 @@ public class Main {
     }
 
     private static void addPets(PetDao dao, Scanner scanner){
-        System.out.println("Podaj parametry: IMIE WIEK WAGA CZY_RASA_CZYSTA IMIE_WLASCICIELA");
+        System.out.println("Podaj parametry: IMIE GATUNEK WIEK WAGA CZY_RASA_CZYSTA IMIE_WLASCICIELA");
         String line = scanner.nextLine();
         String[] words = line.split(" ");
 
         Pet pet = Pet.builder()
                 .name(words[0])
-                .age(Integer.parseInt(words[1]))
-                .weight(Double.parseDouble(words[2]))
-                .pureRace(Boolean.parseBoolean(words[3]))
-                .ownerName(words[4])
+                .petType(words[1])
+                .age(Integer.parseInt(words[2]))
+                .weight(Double.parseDouble(words[3]))
+                .pureRace(Boolean.parseBoolean(words[4]))
+                .ownerName(words[5])
                 .build();
         dao.addToDatabase(pet);
     }
@@ -64,15 +65,16 @@ public class Main {
         System.out.println("Podaj ID zwierzaka: ");
         Long id = Long.parseLong(scanner.nextLine());
 
-        System.out.println("Podaj parametry: IMIE WIEK WAGA CZY_RASA_CZYSTA IMIE_WLASCICIELA");
+        System.out.println("Podaj parametry: IMIE GATUNEK WIEK WAGA CZY_RASA_CZYSTA IMIE_WLASCICIELA");
         String line = scanner.nextLine();
         String[] words = line.split(" ");
         Pet pet = Pet.builder()
                 .name(words[0])
-                .age(Integer.parseInt(words[1]))
-                .weight(Double.parseDouble(words[2]))
-                .pureRace(Boolean.parseBoolean(words[3]))
-                .ownerName(words[4])
+                .petType(words[1])
+                .age(Integer.parseInt(words[2]))
+                .weight(Double.parseDouble(words[3]))
+                .pureRace(Boolean.parseBoolean(words[4]))
+                .ownerName(words[5])
                 .id(id)
                 .build();
         dao.updatePet(pet);

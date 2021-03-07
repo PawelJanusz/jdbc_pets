@@ -9,14 +9,15 @@ public interface PetTableQueries {
                 "CREATE TABLE IF NOT EXISTS `pets`(\n" +
                 "`id` INT AUTO_INCREMENT PRIMARY KEY,\n" +
                 "`name` VARCHAR(15) NOT NULL,\n" +
+                "`pet_type` VARCHAR(15) NOT NULL,\n" +
                 "`age` INT NOT NULL,\n" +
-                "`weight` DECIMAL(10,3),\n" +
+                "`weight` DECIMAL(10,3) NOT NULL,\n" +
                 "`pure_race` BOOLEAN NOT NULL,\n" +
                 "`owner_name` VARCHAR(15) NOT NULL\n" +
                 ");";
 
         String INSERT_PET_QUERY =
-                "INSERT INTO `pets` (`name`, `age`, `weight`, `pure_race`, `owner_name`) VALUES (?, ?, ?, ?, ?);";
+                "INSERT INTO `pets` (`name`, `pet_type`, `age`, `weight`, `pure_race`, `owner_name`) VALUES (?, ?, ?, ?, ?, ?);";
 
         String SELECT_ALL_PETS_QUERY =
                 "SELECT * FROM pets;";
@@ -24,6 +25,7 @@ public interface PetTableQueries {
         String UPDATE_PET_QUERY =
                 "UPDATE pets SET " +
                         "name = ?, " +
+                        "pet_type = ?, " +
                         "age = ?, " +
                         "weight = ?, " +
                         "pure_race = ?, " +
